@@ -12,9 +12,8 @@ import { getUserPosts, signOut } from "@/lib/appwrite"
 
 export default function Profile() {
   const { user, setUser, setIsLoggedIn } = useGlobalContext()
-  if (!user) return null
 
-  const { videos } = useAppwrite(() => getUserPosts(user.$id))
+  const { videos } = useAppwrite(() => user && getUserPosts(user.$id))
 
   const logout = async () => {
     await signOut()
@@ -42,14 +41,14 @@ export default function Profile() {
 
             <View className="h-16 w-16 items-center justify-center rounded-lg border border-secondary">
               <Image
-                source={{ uri: user.avatar }}
+                source={{ uri: user?.avatar }}
                 resizeMode="cover"
                 className="h-[90%] w-[90%] rounded-lg"
               />
             </View>
 
             <InfoBox
-              title={user.username}
+              title={user?.username ?? "Username"}
               titleClassName="text-lg"
               className="mt-5"
             />

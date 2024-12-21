@@ -16,7 +16,7 @@ export default function Search() {
 
   useEffect(() => {
     refetch()
-  }, [query])
+  }, [query]) // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <SafeAreaView className="h-full bg-primary">

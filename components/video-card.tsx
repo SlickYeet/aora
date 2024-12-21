@@ -33,7 +33,7 @@ export function VideoCard({
     } else {
       player.pause()
     }
-  }, [play])
+  }, [play]) // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <View className="mb-14 flex-col items-center px-4">

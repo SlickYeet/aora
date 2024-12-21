@@ -36,12 +36,13 @@ export default function Create() {
   })
   const [uploading, setUploading] = useState<boolean>(false)
 
+  const player = useVideoPlayer(form.video?.uri ?? "")
+
   const { user } = useGlobalContext()
   if (!user) {
     router.push("/sign-in")
     return null
   }
-  const player = useVideoPlayer(form.video?.uri ?? "")
 
   const openPicker = async (selectType: Media) => {
     const result = await launchImageLibraryAsync({

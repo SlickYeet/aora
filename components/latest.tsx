@@ -51,7 +51,7 @@ function LatestItem({ activeItem, item }: LatestItemProps) {
     } else {
       player.pause()
     }
-  }, [play])
+  }, [play]) // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <Animatable.View
@@ -101,7 +101,7 @@ export function Latest({ videos }: LatestProps) {
   const viewableItemsChanged = ({
     viewableItems,
   }: {
-    viewableItems: Array<{ item: VideoType }>
+    viewableItems: { item: VideoType }[]
   }) => {
     if (viewableItems.length > 0) {
       setActiveItem(viewableItems[0].item)
